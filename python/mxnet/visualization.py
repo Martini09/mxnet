@@ -91,18 +91,19 @@ def plot_network(symbol, title="plot", shape=None, node_attrs={}):
             else:
                 continue
         elif op == "Convolution":
-            label = r"Convolution\n%sx%s/%s, %s" % (_str2tuple(node["param"]["kernel"])[0],
+            label = r"Convolution\n%sx%s/%s, %s\n%s" % (_str2tuple(node["param"]["kernel"])[0],
                                                     _str2tuple(node["param"]["kernel"])[1],
                                                     _str2tuple(node["param"]["stride"])[0],
-                                                    node["param"]["num_filter"])
+                                                    node["param"]["num_filter"], name)
             attr["fillcolor"] = cm[1]
         elif op == "FullyConnected":
             label = r"FullyConnected\n%s" % node["param"]["num_hidden"]
             attr["fillcolor"] = cm[1]
         elif op == "BatchNorm":
             attr["fillcolor"] = cm[3]
+            label = r"%s\n%s" % (op, name)
         elif op == "Activation" or op == "LeakyReLU":
-            label = r"%s\n%s" % (op, node["param"]["act_type"])
+            label = r"%s\n%s\n%s" % (op, node["param"]["act_type"], name)
             attr["fillcolor"] = cm[2]
         elif op == "Pooling":
             label = r"Pooling\n%s, %sx%s/%s" % (node["param"]["pool_type"],

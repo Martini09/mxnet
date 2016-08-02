@@ -57,20 +57,22 @@ def _check_arguments(symbol):
     arg_names = symbol.list_arguments()
     for name in arg_names:
         if name in arg_set:
-            raise ValueError(('Find duplicated argument name \"%s\", ' +
-                              'please make the weight name non-duplicated(using name arguments), ' +
-                              'arguments are %s') % (name, str(arg_names)))
+            # raise ValueError(('Find duplicated argument name \"%s\", ' +
+            #                   'please make the weight name non-duplicated(using name arguments), ' +
+            #                   'arguments are %s') % (name, str(arg_names)))
+            pass
         arg_set.add(name)
 
     aux_set = set()
     aux_names = symbol.list_auxiliary_states()
     for name in aux_names:
         if name in aux_set:
-            raise ValueError(
-                ('Find duplicated auxiliary param name \"%s\", ' +
-                 'please make the weight name non-duplicated(using name arguments), ' +
-                 'arguments are %s, auxiliary params are %s'
-                ) % (name, str(arg_names), str(aux_names)))
+            # raise ValueError(
+            #     ('Find duplicated auxiliary param name \"%s\", ' +
+            #      'please make the weight name non-duplicated(using name arguments), ' +
+            #      'arguments are %s, auxiliary params are %s'
+            #     ) % (name, str(arg_names), str(aux_names)))
+            pass
         aux_set.add(name)
 
 def _load_general(data, targets):

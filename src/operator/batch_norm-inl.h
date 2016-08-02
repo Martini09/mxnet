@@ -203,6 +203,7 @@ class BatchNormOp : public Operator {
       Assign(grad_in, req[batchnorm::kData], (grad * broadcast<1>(slope, data.shape_)) *
              broadcast<1>(
                  1.0f / F<mshadow_op::square_root>(moving_var + param_.eps), data.shape_));
+      Assign(gbias, req[batchnorm::kBeta], sumall_except_dim<1>(grad));
     }
   }
 
