@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) 2016 by Contributors
  * \file grad_reverse-inl.h
- * \brief L1 loss with mask
+ * \brief Reverse gradient
  * \author Ye Yuan
 */
 
