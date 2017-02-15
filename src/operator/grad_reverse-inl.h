@@ -81,10 +81,10 @@ public:
     CHECK_EQ(out_grad.size(), 1);
     CHECK_EQ(in_grad.size(), 1);
     Stream<xpu> *s = ctx.get_stream<xpu>();
-    Tensor<xpu, 2> in_grad = in_grad[kData].FlatTo2D<xpu, real_t>(s);    
-    Tensor<xpu, 2> out_grad = out_grad[kOut].FlatTo2D<xpu, real_t>(s);    
+    Tensor<xpu, 2> gdata = in_grad[kData].FlatTo2D<xpu, real_t>(s);    
+    Tensor<xpu, 2> grad = out_grad[kOut].FlatTo2D<xpu, real_t>(s);    
     /* Reverse gradient */
-    in_grad = param_.grad_scale * F<mshadow_op::negation>(out_grad); 
+    gdata = param_.grad_scale * F<mshadow_op::negation>(grad); 
 	}
 
 private:
