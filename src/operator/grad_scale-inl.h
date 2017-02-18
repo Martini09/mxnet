@@ -75,9 +75,9 @@ public:
     using namespace mshadow::expr;
     CHECK_EQ(out_grad.size(), 1);
     Stream<xpu> *s = ctx.get_stream<xpu>();
-    Tensor<xpu, 1> gdata = in_grad[grad_scale::kData].FlatTo1D<xpu, real_t>(s);    
-    Tensor<xpu, 1> grad = out_grad[grad_scale::kOut].FlatTo1D<xpu, real_t>(s);    
-    Tensor<xpu, 1> scale = in_data[grad_scale::kScale].FlatTo1D<xpu, real_t>(s);
+    Tensor<xpu, 1> gdata = in_grad[grad_scale::kData].get<xpu, 1, real_t>(s);    
+    Tensor<xpu, 1> grad = out_grad[grad_scale::kOut].get<xpu, 1, real_t>(s);    
+    Tensor<xpu, 1> scale = in_data[grad_scale::kScale].get<xpu, 1, real_t>(s);
 
     /* Scale gradient */
     gdata = param_.base_scale * grad * scale;
