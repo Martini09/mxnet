@@ -77,7 +77,7 @@ public:
     Stream<xpu> *s = ctx.get_stream<xpu>();
     Tensor<xpu, 2> gdata = in_grad[grad_scale::kData].FlatTo2D<xpu, real_t>(s);    
     Tensor<xpu, 2> grad = out_grad[grad_scale::kOut].FlatTo2D<xpu, real_t>(s);    
-    Tensor<xpu, 1> scale = in_data[grad_scale::kScale].FlatTo1D<xpu, real_t>(s);
+    Tensor<xpu, 1> scale = in_data[grad_scale::kScale].get<xpu, 1, real_t>(s);
 
     /* Scale gradient */
     gdata = param_.base_scale * grad * scale;
