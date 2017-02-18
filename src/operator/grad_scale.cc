@@ -13,7 +13,12 @@ Operator *CreateOp<cpu>(GradScaleParam param) {
   return new GradScaleOp<cpu>(param);
 }
 
+Operator *GradScaleProp::CreateOperator(Context ctx) const {
+  DO_BIND_DISPATCH(CreateOp, param_);
+}
+
 // DO_BIND_DISPATCH comes from operator_common.h
+/*
 Operator *GradScaleProp::CreateOperatorEx(Context ctx, 
                                           std::vector<TShape> *in_shape,
                                           std::vector<int> *in_type) const {
@@ -23,6 +28,7 @@ Operator *GradScaleProp::CreateOperatorEx(Context ctx,
   CHECK(InferShape(in_shape, &out_shape, &aux_shape));
   DO_BIND_DISPATCH(CreateOp, param_, in_type->at(0));
 }
+*/
 
 DMLC_REGISTER_PARAMETER(GradScaleParam);
 
