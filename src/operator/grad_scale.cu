@@ -1,17 +1,17 @@
 /*!
  * Copyright (c) 2016 by Contributors
- * \file grad_reverse.cu
+ * \file grad_scale.cu
  * \brief
  * \author Ye Yuan
 */
 
-#include "./grad_reverse-inl.h"
+#include "./grad_scale-inl.h"
 
 namespace mxnet {
 namespace op {
 template<>
-Operator *CreateOp<gpu>(GradReverseParam param) {
-  return new GradReverseOp<gpu>(param);
+Operator *CreateOp<gpu>(GradScaleParam param) {
+  return new GradScaleOp<gpu>(param);
 }
 
 }  // namespace op
